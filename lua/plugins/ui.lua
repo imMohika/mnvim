@@ -85,7 +85,8 @@ return {
 				end
 				local modified = vim.api.nvim_get_option_value("modified", { buf = props.buf }) and "bold,italic"
 					or "None"
-				local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+				-- local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+				local ft_icon, ft_color = require("mini.icons").get("file", filename)
 
 				local diagnostics = get_diagnostic_label(props.buf)
 
@@ -111,10 +112,5 @@ return {
 		-- config = function()
 		-- 	require("incline").setup()
 		-- end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		event = "LazyFile",
-		opts = { mode = "cursor", max_lines = 3 },
 	},
 }

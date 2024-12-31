@@ -84,7 +84,14 @@ return {
 				end,
 				case_insensitive = true,
 			},
+			use_default_keymaps = false,
 			keymaps = {
+				["<CR>"] = "actions.select",
+				["y"] = "actions.yank_entry",
+
+				-- View
+				["<C-p>"] = "actions.preview",
+				["gs"] = { "actions.change_sort", mode = "n" },
 				["gd"] = {
 					desc = "Toggle file detail view",
 					callback = function()
@@ -96,8 +103,23 @@ return {
 						end
 					end,
 				},
+				["g."] = { "actions.toggle_hidden", mode = "n" },
+
+				-- Navigation
 				["h"] = { "actions.parent", mode = "n" },
 				["l"] = { "actions.select", mode = "n" },
+				["-"] = { "actions.parent", mode = "n" },
+				["_"] = { "actions.open_cwd", mode = "n" },
+
+				-- Close
+				["<esc>"] = { "actions.close", mode = "n" },
+				["<C-c>"] = { "actions.close", mode = "n" },
+
+				-- Misc
+				["g?"] = { "actions.show_help", mode = "n" },
+				["<C-l>"] = "actions.refresh",
+				["g\\"] = { "actions.toggle_trash", mode = "n" },
+				["gx"] = "actions.open_external",
 			},
 		},
 		---@param opts oil.SetupOpts

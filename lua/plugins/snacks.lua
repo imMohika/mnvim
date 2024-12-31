@@ -42,6 +42,9 @@ return {
 					wo = { wrap = true } -- Wrap notifications
 				},
 			},
+      lazygit = {
+        configure = true,
+      }
 		},
 		keys = function()
 			local Snacks = require("snacks")

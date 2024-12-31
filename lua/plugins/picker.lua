@@ -104,30 +104,29 @@ return {
 				function()
 					require("telescope.builtin").help_tags()
 				end,
-
-				"[F]uzzy [h]elp",
+				desc = "[F]uzzy [h]elp",
 			},
 			{
 				"<leader>fk",
 				"<cmd>Telescope keymaps<cr>",
-				"[F]uzzy [k]eymaps",
+				desc = "[F]uzzy [k]eymaps",
 			},
 			{
 				"<leader>ft",
 				"<cmd>Telescope builtin<cr>",
-				"[F]uzzy [t]elescope",
+				desc = "[F]uzzy [t]elescope",
 			},
 
 			-- Buffer
 			{
 				"<leader>fb",
 				"<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
-				"[F]uzzy [b]uffers",
+				desc = "[F]uzzy [b]uffers",
 			},
 			{
 				"<leader>f/",
 				"<cmd>Telescope current_buffer_fuzzy_find<cr>",
-				"[F]uzzy find current [b]uffer",
+				desc = "[F]uzzy find current [b]uffer",
 			},
 
 			-- Files
@@ -136,7 +135,7 @@ return {
 				function()
 					require("telescope.builtin").find_files()
 				end,
-				"[F]uzzy [f]iles",
+				desc = "[F]uzzy [f]iles",
 			},
 			{
 				"<leader>fF",
@@ -145,19 +144,19 @@ return {
 						cwd = require("telescope.utils").buffer_dir(),
 					})
 				end,
-				"[F]uzzy [F]iles (current dir)",
+				desc = "[F]uzzy [F]iles (current dir)",
 			},
 			{
 				"<leader>f.",
 				":Telescope oldfiles<cr>",
-				"[F]uzzy [.] Oldfiles",
+				desc = "[F]uzzy [.] Oldfiles",
 			},
 
 			-- Grep
 			{
 				"<leader>fg",
 				"<cmd>Telescope live_grep<cr>",
-				"[F]uzzy with [g]rep",
+				desc = "[F]uzzy with [g]rep",
 			},
 			{
 				"<leader>fG",
@@ -167,12 +166,12 @@ return {
 					})
 				end,
 				"<cmd>Telescope live_grep<cr>",
-				"[F]uzzy with [G]rep (current dir)",
+				desc = "[F]uzzy with [G]rep (current dir)",
 			},
 			{
 				"<leader>fw",
 				"<cmd>Telescope grep_string<cr>",
-				"[F]uzzy current [w]ord",
+				desc = "[F]uzzy current [w]ord",
 			},
 
 			-- Git
@@ -184,65 +183,75 @@ return {
 			{
 				"<leader>fd",
 				":Telescope diagnostics bufnr=0<cr>",
-				"[F]uzzy [d]iagnostics (document)",
+				desc = "[F]uzzy [d]iagnostics (document)",
 			},
 			{
 				"<leader>fD",
 				":Telescope diagnostics<cr>",
-				"[F]uzzy [D]iagnostics (workspace)",
+				desc = "[F]uzzy [D]iagnostics (workspace)",
 			},
 
 			-- Jump
 			{
 				"<leader>fj",
 				":Telescope jumplist<cr>",
-				"[F]uzzy [j]umplist",
+				desc = "[F]uzzy [j]umplist",
 			},
 			{
 				"<leader>fm",
 				":Telescope marks<cr>",
-				"[F]uzzy [m]arks",
+				desc = "[F]uzzy [m]arks",
 			},
 			{
 				"<leader>fq",
 				":Telescope quickfix<cr>",
-				"[F]uzzy [q]uickfix",
+				desc = "[F]uzzy [q]uickfix",
 			},
 			{
 				"<leader>fl",
 				":Telescope loclist<cr>",
-				"[F]uzzy [l]oclist",
+				desc = "[F]uzzy [l]oclist",
 			},
+
+      -- Quick access
+			{
+				"<leader>fc",
+				function()
+					require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+				end,
+				desc = "[F]uzzy Neovim [c]onfigs",
+			},
+			{
+				"<leader>fn",
+				function()
+					require("telescope.builtin").find_files({ cwd = vim.fn.expand("~/notes") })
+				end,
+				desc = "[F]uzzy [n]otes",
+			},
+
 
 			-- Misc
 			{
 				"<leader>fr",
 				":Telescope resume<cr>",
-				"[F]uzzy [r]esume",
+				desc = "[F]uzzy [r]esume",
 			},
 			{
 				"<leader>fv",
 				":Telescope vim_options<cr>",
-				"[F]uzzy [v]im options",
-			},
-			{
-				"<leader>fn",
-				function()
-					require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
-				end,
-				"[F]uzzy [n]vim files",
+				desc = "[F]uzzy [v]im options",
 			},
 			{
 				"<leader>f:",
 				":Telescope command_history<cr>",
-				"[F]uzzy [:] Command history",
+				desc = "[F]uzzy [:] Command history",
 			},
 			{
-				"<leader>fc",
+				"<leader>fC",
 				function()
 					require("telescope.builtin").colorscheme({ enable_preview = true })
 				end,
-				"[F]uzzy [c]olorscheme",
+				desc = "[F]uzzy [C]olorscheme",
 			},
 		},
 		config = function(_, opts)

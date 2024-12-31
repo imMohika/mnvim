@@ -5,7 +5,10 @@ return {
 		lazy = false,
 		priority = 900,
 		config = function()
-			require("mini.icons").setup({})
+			local icons = require("mini.icons")
+			icons.setup({})
+			-- Because Telescope
+			icons.mock_nvim_web_devicons()
 
 			require("mini.ai").setup({
 				n_lines = 500,
@@ -20,7 +23,7 @@ return {
 			require("mini.bracketed").setup({})
 
 			-- Switch to gitsigns
-			require("mini.diff").setup({})
+			-- require("mini.diff").setup({})
 
 			require("mini.move").setup({})
 
@@ -83,13 +86,15 @@ return {
 
 			-- hilight patterns
 			local hipatterns = require("mini.hipatterns")
+			local goalGroup = hipatterns.compute_hex_color_group("#ffffff", "bg")
 			hipatterns.setup({
 				highlighters = {
-					-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+					-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE', 'GOAL'
 					fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
 					hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
 					todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
 					note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+					goal = { pattern = "%f[%w]()GOAL()%f[%W]", group = goalGroup },
 
 					-- Highlight hex color strings (`#rrggbb`) using that color
 					hex_color = hipatterns.gen_highlighter.hex_color(),

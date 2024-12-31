@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 
 MNvim = require("mnvim").with_config({
 	colorscheme = "moonbow",
+	picker = "telescope",
 })
 
 require("options")
